@@ -247,8 +247,19 @@ section.information span.close-inf-bar {
     color: white;
     border: none;
     cursor: pointer;
+    transform: translateY(-2px);
     transition: 0.25s;
 }
+.log-section button::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 110%;
+    color: black;
+    left: 0%;
+    transform: translate(-15%, 0);
+    font-size: 15px;
+}
+
 .log-section button:hover {
     opacity: 0.9;
     transform: translateY(-2px);
