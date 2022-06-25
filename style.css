@@ -355,6 +355,10 @@ hr {
 
 
 @media (max-width: 415px) {
+    .stats .content .reset-history {
+        right: 80px;
+        top: 17px;
+    }
     nav h1 span {
         display: none;
     }
