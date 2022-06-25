@@ -69,7 +69,7 @@ const user = {
     work: 12,
     attendance_bonus: 30000,
     tax_from: 433700,
-    currency: "HUF"
+    currency: "F"
 }
 window.addEventListener("load", function() {
     for(i = 0; i < cfgValues.length; i++) {
