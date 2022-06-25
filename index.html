@@ -55,26 +55,18 @@
     </section>
 
     <section class="log-section default-section">
-        <button onclick="reload()" id="reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-        <button id="save-result" class="stats-btn"><i class="fa fa-area-chart" aria-hidden="true"></i></button>
+        <button data-text="Перезагрузка" onclick="reload()" id="reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <button data-text="Статистика" id="save-result" class="stats-btn"><i class="fa fa-area-chart" aria-hidden="true"></i></button>
     </section>
 
     <section class="stats hidden">
         <div class="content">
+            <span onclick="base.resetList()" class="reset-history"><i class="fa fa-ban" aria-hidden="true"></i></span>
             <span class="close-item">&times;</span>
             <h1>История</h1>
             <br>
             <hr>
-            <div class="elements">
-                <!-- <div class="item">
-                    <ul>
-                        <li class="date">2022/01/01, 22:53:13</li>
-                        <li class="balance">290 535</li>
-                        <li class="per-hours">1800</li>
-                        <li class="age-status">19</li>
-                    </ul>
-                </div> -->
-            </div>
+            <div class="elements"></div>
         </div>
     </section>
 
