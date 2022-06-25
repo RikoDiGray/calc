@@ -63,7 +63,7 @@ function animationNum(id, key) {
 const cfgValues = document.querySelectorAll(".st-section input");
 let config = [];
 let default_config = [];
-const list = JSON.parse(sessionStorage.getItem('list')) || [];
+let list = JSON.parse(sessionStorage.getItem('list')) || [];
 
 const user = {
     work: 12,
@@ -164,6 +164,19 @@ class myMath {
         animationNum('#r-tax-from', Number(config[6].value));
         animationNum('#r-result', result);
 
+        let cfg = {
+            id: list.length == 0 ? list.length : list.length,
+            date: {
+                time: new Date().getTime(),
+                simple: new Date().toLocaleString()
+            },
+            balance: result,
+            bid: Number(config[0].value),
+            age: Number(config[4].value)
+        }
+
+        build.create(cfg);
+
         base.setList();
     }
 }
@@ -178,7 +191,7 @@ class Data {
     get() {
         config = JSON.parse(sessionStorage.getItem("settings-cfg"));
         console.clear();
-        console.log("%c[GET] Work is end.", "color: green;")
+        console.log("[GET] Work is end.")
         for(let i = 0; i < cfgValues.length; i++) {
             cfgValues[i].value = config[i].value;
         }
@@ -186,7 +199,7 @@ class Data {
     reset() {
         config = default_config;
         this.update();
-        console.log("%c[RESET] Work is end.", "color: crimson;")
+        console.log("[RESET] Work is end.")
         
     }
 
@@ -198,13 +211,13 @@ class Data {
                 value: cfgValues[i].value
             })
         }
-        console.log("%c[SET] Work is end.", "color: royalblue;")
+        console.log("[SET] Work is end.")
         this.update();
     }
 
     update() {
         sessionStorage.setItem("settings-cfg", JSON.stringify(config));
-        console.log("%c[UPDATE] Work is end.", "color: green;")
+        console.log("[UPDATE] Work is end.",)
     }
 
 
@@ -221,7 +234,22 @@ class Data {
         })
         sessionStorage.setItem('list', JSON.stringify(list));
 
-        console.log(`%c[SET LIST: ${list.length}] New item was addedd!`, 'color: green;');
+        console.log(`[SET LIST: ${list.length}] New item was addedd!`);
+    }
+    resetList() {
+        list =  [];
+        sessionStorage.setItem('list', JSON.stringify(list));
+        console.log('[RESET LIST] Clear');
+
+        const path = document.querySelectorAll(".elements .item");
+        if(path != null) {
+            let time = 250;
+            path.forEach(x => {
+                setTimeout(() => {
+                    x.remove()
+                }, time = time + 50)
+            })
+        }
     }
 }
 
