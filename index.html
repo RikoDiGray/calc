@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <nav>
+        <h1><span>Универсальный калькулятор</span> <strong>ASU</strong></h1>
+        <div>
+            <button class="i-def settings-btn"><i class="fa fa-cog" aria-hidden="true"></i></button>
+        </div>
+    </nav>
+
+    <section class="settings-bar hidden">
+        <span class="close-settings-bar">&times;</span>
+        <h2 data-text="000">Настройки</h2>
+        <div class="st-section">
+            <label>
+                <span>Ставка в час (Брутто)</span>
+                <input value="1700" type="text" id="rate-per-hour" data-text="Ставка в час" placeholder="">
+            </label>
+            <label>
+                <span>Бонус ночных смен (%)</span>
+                <input value="30" type="text" id="night-shift-bonus" data-text="Бонус ночных смен" placeholder="">
+            </label>
+            <label>
+                <span>Бонус за присутствие</span>
+                <input value="30000" type="text" id="attendance-bonus" data-text="Бонус за овертайм" placeholder="">
+            </label>
+            <label>
+                <span>Бонус за овертайм (%)</span>
+                <input value="100" type="text" id="overtime-bonus" data-text="Бонус за овертайм" placeholder="">
+            </label>
+            <label>
+                <span>Возраст</span>
+                <input value="19" type="text" id="age" data-text="Возраст" placeholder="">
+            </label>
+            <label>
+                <span>Налог до 25 лет (%)</span>
+                <input value="18.5" type="text" id="tax-to" data-text="Налог до 25" placeholder="">
+            </label>
+            <label>
+                <span>Налог после 25 лет (%)</span>
+                <input value="33.5" type="text" id="tax-from" data-text="Налог после 25" placeholder="">
+            </label>
+        </div>
+        <div>
+            <button class="i-def" id="save-settings" onclick="base.set()">Сохранить</button>
+            <button class="i-def" id="reset-settings" onclick="base.reset()">Сбросить</button>
+        </div>
+    </section>
+
+    <section class="log-section default-section">
+        <button onclick="reload()" id="reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <button id="save-result" class="stats-btn"><i class="fa fa-area-chart" aria-hidden="true"></i></button>
+    </section>
+
+    <section class="stats hidden">
+        <div class="content">
+            <span class="close-item">&times;</span>
+            <h1>История</h1>
+            <br>
+            <hr>
+            <div class="elements">
+                <!-- <div class="item">
+                    <ul>
+                        <li class="date">2022/01/01, 22:53:13</li>
+                        <li class="balance">290 535</li>
+                        <li class="per-hours">1800</li>
+                        <li class="age-status">19</li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <section class="default-section">
+        <div class="input-section">
+            <div>
+                <label>
+                    <span>Дней</span>
+                    <input type="text" id="days" data-text="Всего" placeholder="">
+                </label>
+                <label>
+                    <span>Овертаймов</span>
+                    <input type="text" id="overtimes" data-text="Овертаймов" placeholder="">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>Ночных</span>
+                    <input type="text" id="night-shifts" data-text="Ночных" placeholder="">
+                </label>
+                <label>
+                    <span>Дневных</span>
+                    <input type="text" id="day-shifts" data-text="Дневных" placeholder="">
+                </label>
+            </div>
+            <button onclick="math.simple()" id="get-result" class="i-def">Тест</button>
+        </div>
+    </section>
+
+
+
+    <section class="information hidden">
+        <div class="bg"></div>
+        <div class="content">
+            <span class="close-inf-bar">&times;</span>
+            <h1>Результат</h1>
+            <div class="res-section">
+                <h2>Всего <span id="r-all-days">0</span></h2>
+                <h2>Дневных <span id="r-days">0</span></h2>
+                <h2>Ночных <span id="r-nights">0</span></h2>
+                <h2>Овертаймов <span id="r-overtimes">0</span></h2>
+                <br>
+                <h2>Ставка в час (нетто) <span id="r-per-hour">0</span></h2>
+                <h2>Бонус посещаемости <span id="r-attendance-bonus">0</span></h2>
+                <h2>Бонус ночных <span id="r-night-bonus">0</span><span id="r-attendance-bonus-pr">%</span></h2>
+                <h2>Налог (до 400К) <span id="r-tax-to">0</span></h2>
+                <h2>Налог (от 400К) <span id="r-tax-from">0</span></h2>
+                <br>
+                <h2>Итого <span id="r-result"></span><span id="currency"></span></h2>
+                <h2>Погрешность <span>~5000</span></h2>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
+    <script src="https://use.fontawesome.com/56a05ea9c2.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
