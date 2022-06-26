@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Adaptive 2.0</title>
+    <title>Calculator</title>
 </head>
 <body>
     <nav>
-        <h1><span>Универсальный калькулятор</span> <strong>Adaptive 2.0</strong></h1>
+        <h1><span>Универсальный калькулятор</span> <strong>ASU</strong></h1>
         <div>
             <button class="i-def settings-btn"><i class="fa fa-cog" aria-hidden="true"></i></button>
+            <button data-text="Перезагрузка" onclick="reload()" class="i-def" id="reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            <button data-text="Статистика" id="save-result" class="i-def stats-btn"><i class="fa fa-area-chart" aria-hidden="true"></i></button>
         </div>
     </nav>
 
@@ -21,31 +23,31 @@
         <div class="st-section">
             <label>
                 <span>Ставка в час (Брутто)</span>
-                <input value="1700" type="text" id="rate-per-hour" data-text="Ставка в час" placeholder="">
+                <input value="1700" type="tel" id="rate-per-hour" data-text="Ставка в час" placeholder="">
             </label>
             <label>
                 <span>Бонус ночных смен (%)</span>
-                <input value="30" type="text" id="night-shift-bonus" data-text="Бонус ночных смен" placeholder="">
+                <input value="30" type="tel" id="night-shift-bonus" data-text="Бонус ночных смен" placeholder="">
             </label>
             <label>
                 <span>Бонус за присутствие</span>
-                <input value="30000" type="text" id="attendance-bonus" data-text="Бонус за овертайм" placeholder="">
+                <input value="30000" type="tel" id="attendance-bonus" data-text="Бонус за овертайм" placeholder="">
             </label>
             <label>
                 <span>Бонус за овертайм (%)</span>
-                <input value="100" type="text" id="overtime-bonus" data-text="Бонус за овертайм" placeholder="">
+                <input value="100" type="tel" id="overtime-bonus" data-text="Бонус за овертайм" placeholder="">
             </label>
             <label>
                 <span>Возраст</span>
-                <input value="19" type="text" id="age" data-text="Возраст" placeholder="">
+                <input value="19" type="tel" id="age" data-text="Возраст" placeholder="">
             </label>
             <label>
                 <span>Налог до 25 лет (%)</span>
-                <input value="18.5" type="text" id="tax-to" data-text="Налог до 25" placeholder="">
+                <input value="18.5" type="tel" id="tax-to" data-text="Налог до 25" placeholder="">
             </label>
             <label>
                 <span>Налог после 25 лет (%)</span>
-                <input value="33.5" type="text" id="tax-from" data-text="Налог после 25" placeholder="">
+                <input value="33.5" type="tel" id="tax-from" data-text="Налог после 25" placeholder="">
             </label>
         </div>
         <div>
@@ -55,8 +57,6 @@
     </section>
 
     <section class="log-section default-section">
-        <button data-text="Перезагрузка" onclick="reload()" id="reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-        <button data-text="Статистика" id="save-result" class="stats-btn"><i class="fa fa-area-chart" aria-hidden="true"></i></button>
     </section>
 
     <section class="stats hidden">
@@ -75,21 +75,21 @@
             <div>
                 <label>
                     <span>Дней</span>
-                    <input type="text" id="days" data-text="Всего" placeholder="">
+                    <input type="tel" id="days" data-text="Всего" placeholder="">
                 </label>
                 <label>
                     <span>Овертаймов</span>
-                    <input type="text" id="overtimes" data-text="Овертаймов" placeholder="">
+                    <input type="tel" id="overtimes" data-text="Овертаймов" placeholder="">
                 </label>
             </div>
             <div>
                 <label>
                     <span>Ночных</span>
-                    <input type="text" id="night-shifts" data-text="Ночных" placeholder="">
+                    <input type="tel" id="night-shifts" data-text="Ночных" placeholder="">
                 </label>
                 <label>
                     <span>Дневных</span>
-                    <input type="text" id="day-shifts" data-text="Дневных" placeholder="">
+                    <input type="tel" id="day-shifts" data-text="Дневных" placeholder="">
                 </label>
             </div>
             <button onclick="math.simple()" id="get-result" class="i-def">Тест</button>
