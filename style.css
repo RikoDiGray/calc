@@ -80,10 +80,10 @@ button.i-def {
     border-radius: 3px;
     cursor: pointer;
 }
-button.settings-btn {
-    background-color: white;
-    color: royalblue;
-    box-shadow: none;
+nav div button {
+    background-color: white !important;
+    color: royalblue !important;
+    box-shadow: none !important;
     margin-right: 25px;
     transition: 0.25s;
 }
@@ -250,15 +250,7 @@ section.information span.close-inf-bar {
     transform: translateY(-2px);
     transition: 0.25s;
 }
-.log-section button::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 110%;
-    color: black;
-    left: 0%;
-    transform: translate(-15%, 0);
-    font-size: 15px;
-}
+
 
 .log-section button:hover {
     opacity: 0.9;
@@ -355,10 +347,6 @@ hr {
 
 
 @media (max-width: 415px) {
-    .stats .content .reset-history {
-        right: 80px;
-        top: 17px;
-    }
     nav h1 span {
         display: none;
     }
