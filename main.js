@@ -63,13 +63,13 @@ function animationNum(id, key) {
 const cfgValues = document.querySelectorAll(".st-section input");
 let config = [];
 let default_config = [];
-let list = JSON.parse(sessionStorage.getItem('list')) || [];
+let list = JSON.parse(localStorage.getItem('list')) || [];
 
 const user = {
     work: 12,
     attendance_bonus: 30000,
     tax_from: 433700,
-    currency: "F"
+    currency: "HUF"
 }
 window.addEventListener("load", function() {
     for(i = 0; i < cfgValues.length; i++) {
@@ -78,7 +78,7 @@ window.addEventListener("load", function() {
             value: cfgValues[i].value
         })
     }
-    let getMemory = this.sessionStorage.getItem("settings-cfg");
+    let getMemory = this.localStorage.getItem("settings-cfg");
     for(i = 0; i < cfgValues.length; i++) {
         config.push({
             text: cfgValues[i].getAttribute("data-text"),
@@ -86,7 +86,7 @@ window.addEventListener("load", function() {
         })
     }
     if(getMemory == null) {
-        this.sessionStorage.setItem("settings-cfg", JSON.stringify(config));
+        this.localStorage.setItem("settings-cfg", JSON.stringify(config));
     }
 
     base.get();
@@ -111,11 +111,11 @@ class myMath {
         let nightShifts = Number(document.querySelector("#night-shifts").value) || 0;
         let dayShifts = Number(document.querySelector("#day-shifts").value) || (days_all - nightShifts) || 0;
 
-        const default_num = (user.work * config[0].value) * days_all;
+        const default_num = (user.work * Number(config[0].value)) * days_all;
         let num = default_num;
-        const default_over = (user.work * config[0].value) * overtimes * 2;
+        const default_over = (user.work * Number(config[0].value)) * overtimes * 2;
         let num2 = default_over;
-        const default_nights = (user.work * config[0].value) * nightShifts;
+        const default_nights = (user.work * Number(config[0].value)) * nightShifts;
         let num3 = default_nights + (default_nights * 0.3);
 
         let result = num + num2 + num3 + user.attendance_bonus;
@@ -189,7 +189,7 @@ const math = new myMath();
 
 class Data {
     get() {
-        config = JSON.parse(sessionStorage.getItem("settings-cfg"));
+        config = JSON.parse(localStorage.getItem("settings-cfg"));
         console.clear();
         console.log("[GET] Work is end.")
         for(let i = 0; i < cfgValues.length; i++) {
@@ -216,7 +216,7 @@ class Data {
     }
 
     update() {
-        sessionStorage.setItem("settings-cfg", JSON.stringify(config));
+        localStorage.setItem("settings-cfg", JSON.stringify(config));
         console.log("[UPDATE] Work is end.",)
     }
 
@@ -232,13 +232,13 @@ class Data {
             bid: Number(config[0].value),
             age: Number(config[4].value)
         })
-        sessionStorage.setItem('list', JSON.stringify(list));
+        localStorage.setItem('list', JSON.stringify(list));
 
         console.log(`[SET LIST: ${list.length}] New item was addedd!`);
     }
     resetList() {
         list =  [];
-        sessionStorage.setItem('list', JSON.stringify(list));
+        localStorage.setItem('list', JSON.stringify(list));
         console.log('[RESET LIST] Clear');
 
         const path = document.querySelectorAll(".elements .item");
